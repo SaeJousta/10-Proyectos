@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reto 10 Proyectos</title>
+    <link rel="stylesheet" href="10.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="page-header">
+            <div>
+                <p class="eyebrow">Alessandro Briceño</p>
+                <h1>Reto 10 Proyectos</h1>
+                <p class="subtitle">Reto de los 10 proyectos interactivos echos en HTML, CSS y JavaScript</p>
+            </div>
+            <a class="github-link" href="https://github.com/SaeJousta" target="_blank" rel="noreferrer noopener">Ver mi GitHub</a>
+        </header>
+
+        <nav class="tabs" aria-label="Navegación de proyectos">
+            <ul>
+                <li><a href="#contador" class="tab active" onclick="mostrarSeccion('contador'); return false;">Contador</a></li>
+                <li><a href="#lista-tareas" class="tab" onclick="mostrarSeccion('lista-tareas'); return false;">Tareas</a></li>
+                <li><a href="#adivina-numero" class="tab" onclick="mostrarSeccion('adivina-numero'); return false;">Adivina</a></li>
+                <li><a href="#calculadora" class="tab" onclick="mostrarSeccion('calculadora'); return false;">Calculadora</a></li>
+                <li><a href="#cambiador-colores" class="tab" onclick="mostrarSeccion('cambiador-colores'); return false;">Colores</a></li>
+                <li><a href="#temporizador" class="tab" onclick="mostrarSeccion('temporizador'); return false;">Temporizador</a></li>
+                <li><a href="#generador-contrasenas" class="tab" onclick="mostrarSeccion('generador-contrasenas'); return false;">Contraseñas</a></li>
+                <li><a href="#modo-oscuro" class="tab" onclick="mostrarSeccion('modo-oscuro'); return false;">Tema</a></li>
+                <li><a href="#piedra-papel-tijera" class="tab" onclick="mostrarSeccion('piedra-papel-tijera'); return false;">Juego</a></li>
+                <li><a href="#galeria-imagenes" class="tab" onclick="mostrarSeccion('galeria-imagenes'); return false;">Galería</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <section id="contador" class="proyecto card">
+                <h2>Contador Inteligente</h2>
+                <div id="contador-display" class="display">0</div>
+                <div class="button-row">
+                    <button class="btn" onclick="incrementar()">+1</button>
+                    <button class="btn btn-secondary" onclick="decrementar()">-1</button>
+                    <button class="btn btn-muted" onclick="reiniciar()">Reiniciar</button>
+                </div>
+            </section>
+
+            <section id="lista-tareas" class="proyecto card" style="display: none;">
+                <h2>Lista de Tareas</h2>
+                <div class="field-row">
+                    <input type="text" id="tarea-input" placeholder="Escribe una tarea">
+                    <button class="btn" onclick="agregarTarea()">Agregar</button>
+                </div>
+                <ul id="tareas-lista" class="task-list"></ul>
+            </section>
+
+            <section id="adivina-numero" class="proyecto card" style="display: none;">
+                <h2>Adivina el Número</h2>
+                <div class="field-row">
+                    <input type="number" id="numero-input" placeholder="Un número entre 1 y 100">
+                    <button class="btn" onclick="adivinar()">Adivinar</button>
+                </div>
+                <div id="resultado-adivinanza" class="message"></div>
+            </section>
+
+            <section id="calculadora" class="proyecto card" style="display: none;">
+                <h2>Calculadora Básica</h2>
+                <input class="calculator-display" type="text" id="calculadora-display" disabled>
+                <div class="grid-buttons">
+                    <button class="btn btn-grid" onclick="agregarNumero(7)">7</button>
+                    <button class="btn btn-grid" onclick="agregarNumero(8)">8</button>
+                    <button class="btn btn-grid" onclick="agregarNumero(9)">9</button>
+                    <button class="btn btn-grid btn-accent" onclick="operar('/')">/</button>
+                    <button class="btn btn-grid" onclick="agregarNumero(4)">4</button>
+                    <button class="btn btn-grid" onclick="agregarNumero(5)">5</button>
+                    <button class="btn btn-grid" onclick="agregarNumero(6)">6</button>
+                    <button class="btn btn-grid btn-accent" onclick="operar('*')">*</button>
+                    <button class="btn btn-grid" onclick="agregarNumero(1)">1</button>
+                    <button class="btn btn-grid" onclick="agregarNumero(2)">2</button>
+                    <button class="btn btn-grid" onclick="agregarNumero(3)">3</button>
+                    <button class="btn btn-grid btn-accent" onclick="operar('-')">-</button>
+                    <button class="btn btn-grid btn-muted" onclick="borrar()">C</button>
+                    <button class="btn btn-grid" onclick="agregarNumero(0)">0</button>
+                    <button class="btn btn-grid btn-primary" onclick="calcular()">=</button>
+                    <button class="btn btn-grid btn-accent" onclick="operar('+')">+</button>
+                </div>
+            </section>
+
+            <section id="cambiador-colores" class="proyecto card" style="display: none;">
+                <h2>Cambiador de Colores</h2>
+                <div class="button-row">
+                    <button class="btn" onclick="cambiarColor()">Cambiar color</button>
+                    <button class="btn btn-muted" onclick="restablecerColor()">Restablecer</button>
+                </div>
+                <div id="color-codigo" class="color-code"></div>
+            </section>
+
+            <section id="temporizador" class="proyecto card" style="display: none;">
+                <h2>Temporizador</h2>
+                <div class="field-row">
+                    <input type="number" id="minutos" placeholder="Minutos">
+                    <input type="number" id="segundos" placeholder="Segundos">
+                </div>
+                <div class="button-row">
+                    <button class="btn" onclick="iniciarTemporizador()">Iniciar</button>
+                    <button class="btn btn-secondary" onclick="pausarTemporizador()">Pausar</button>
+                    <button class="btn btn-muted" onclick="reiniciarTemporizador()">Reiniciar</button>
+                </div>
+                <div id="temporizador-display" class="display display-secondary"></div>
+            </section>
+
+            <section id="generador-contrasenas" class="proyecto card" style="display: none;">
+                <h2>Generador de Contraseñas</h2>
+                <div class="field-row wrap">
+                    <input type="number" id="longitud" min="6" max="20" placeholder="Longitud">
+                    <button class="btn" onclick="generarContrasena()">Generar</button>
+                </div>
+                <div class="checkbox-grid">
+                    <label><input type="checkbox" id="mayusculas"> Mayúsculas</label>
+                    <label><input type="checkbox" id="minusculas"> Minúsculas</label>
+                    <label><input type="checkbox" id="numeros"> Números</label>
+                    <label><input type="checkbox" id="simbolos"> Símbolos</label>
+                </div>
+                <div id="contrasena-display" class="message"></div>
+            </section>
+
+            <section id="modo-oscuro" class="proyecto card" style="display: none;">
+                <h2>Modo Oscuro / Claro</h2>
+                <button class="btn" onclick="toggleModo()">Cambiar modo</button>
+            </section>
+
+            <section id="piedra-papel-tijera" class="proyecto card" style="display: none;">
+                <h2>Piedra, Papel o Tijera</h2>
+                <div class="button-row wrap">
+                    <button class="btn btn-grid" onclick="jugar('piedra')">Piedra</button>
+                    <button class="btn btn-grid" onclick="jugar('papel')">Papel</button>
+                    <button class="btn btn-grid" onclick="jugar('tijera')">Tijera</button>
+                    <button class="btn btn-muted" onclick="reiniciarJuego()">Reiniciar</button>
+                </div>
+                <div id="resultado-juego" class="message"></div>
+            </section>
+
+            <section id="galeria-imagenes" class="proyecto card" style="display: none;">
+                <h2>Galería de Imágenes</h2>
+                <input type="text" id="buscador" placeholder="Buscar imágenes...">
+                <div id="imagenes-grid"></div>
+            </section>
+        </main>
+
+        <div id="image-modal" class="image-modal hidden" onclick="cerrarModal(event)">
+            <div class="image-modal-content" onclick="event.stopPropagation()">
+                <button class="modal-close" onclick="cerrarModal(event)">&times;</button>
+                <img id="modal-image" src="" alt="Imagen ampliada">
+                <p id="modal-caption"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="10.js"></script>
+    <p>&copy; 2026 Alessandro Briceño</p>
+</body>
+
+</html>
